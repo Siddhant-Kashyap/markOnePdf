@@ -23,6 +23,7 @@ public class RabbitMQConfig {
         return new Queue(QUEUE,true);
     }
 
+    @Bean
     public Binding binding(Queue queue,DirectExchange exchange){
         return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);
     }

@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class JobService {
-    private ConversionJobRepository conversionJobRepository;
+    private final ConversionJobRepository conversionJobRepository;
 
     public ConversionJob createJob(List<String> inputFiles, ConversionType conversionType){
         ConversionJob job = new ConversionJob();

@@ -32,6 +32,7 @@ public class JobController {
         return ResponseEntity.ok(jobService.getJob(id));
     }
 
+    @GetMapping("/{id}/download")
     public ResponseEntity<Resource> downloadResult(@PathVariable String id){
         ConversionJob job = jobService.getJob(id);
         if(job.getJobStatus()!= JobStatus.COMPLETED){

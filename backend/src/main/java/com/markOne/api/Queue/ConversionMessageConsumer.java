@@ -4,6 +4,7 @@ import com.markOne.api.Job.JobService;
 import com.markOne.api.Enum.JobStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Service;
 public class ConversionMessageConsumer {
     private  final JobService jobService;
 
-    public void handleMesage(String jobId){
+    @RabbitListener(queues = RabbitMQConfig.QUEUE)
+    public void handleMessage(String jobId){
         log.info("Received Conversion job : {}",jobId);
         try {
             jobService.updateStatus(jobId, JobStatus.PROCESSING,null);
