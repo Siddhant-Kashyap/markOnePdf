@@ -1,4 +1,4 @@
-package Job;
+package com.markOne.api.Job;
 
 import com.markOne.api.Enum.ConversionType;
 import lombok.Data;

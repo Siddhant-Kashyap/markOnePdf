@@ -1,6 +1,6 @@
-package Queue;
+package com.markOne.api.Queue;
 
-import Job.JobService;
+import com.markOne.api.Job.JobService;
 import com.markOne.api.Enum.JobStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

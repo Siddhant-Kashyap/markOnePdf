@@ -1,4 +1,4 @@
-package Job;
+package com.markOne.api.Job;
 
 import com.markOne.api.Entity.ConversionJob;
 import com.markOne.api.Enum.ConversionType;

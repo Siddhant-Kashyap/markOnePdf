@@ -1,6 +1,6 @@
-package Job;
+package com.markOne.api.Job;
 
-import Queue.ConversionMessageProducer;
+import com.markOne.api.Queue.ConversionMessageProducer;
 import com.markOne.api.Entity.ConversionJob;
 import com.markOne.api.Enum.JobStatus;
 import com.markOne.api.Repository.ConversionJobRepository;

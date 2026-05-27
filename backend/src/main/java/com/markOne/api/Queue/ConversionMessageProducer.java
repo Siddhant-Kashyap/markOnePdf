@@ -1,4 +1,4 @@
-package Queue;
+package com.markOne.api.Queue;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

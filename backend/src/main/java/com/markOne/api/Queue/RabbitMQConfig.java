@@ -1,4 +1,4 @@
-package Queue;
+package com.markOne.api.Queue;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
