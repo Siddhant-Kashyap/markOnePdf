@@ -24,6 +24,7 @@ public class JobController {
     public ResponseEntity<ConversionJob> createJob(@RequestBody JobRequest request){
         ConversionJob conversionJob = jobService.createJob(request.getFileIds(),request.getConversionType());
         // send message to producer
+        conversionMessageProducer.sendMessage(conversionJob.getId());
         return ResponseEntity.ok(conversionJob);
     }
 
@@ -41,7 +42,7 @@ public class JobController {
         Resource file = storageService.load(job.getOutputFileId());
         return ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_PDF)
-                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\"converted.pdf")
+                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=\"converted.pdf\"")
                 .body(file);
     }
 

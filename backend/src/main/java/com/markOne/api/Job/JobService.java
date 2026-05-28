@@ -30,7 +30,7 @@ public class JobService {
         return conversionJobRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Job not found: " + id));
     }
-    public  ConversionJob updateStatus(String id,JobStatus status,String errorMessage){
+    public ConversionJob updateStatus(String id,JobStatus status,String errorMessage){
         ConversionJob job = getJob(id);
         job.setJobStatus(status);
         job.setUpdatedAt(LocalDateTime.now());
