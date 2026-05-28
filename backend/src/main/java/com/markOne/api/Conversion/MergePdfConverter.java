@@ -4,8 +4,8 @@ import com.markOne.api.Entity.FileMetaData;
 import com.markOne.api.Enum.ConversionType;
 import com.markOne.api.Storage.StorageService;
 import lombok.RequiredArgsConstructor;
-import org.apache.pdfbox.io.RandomAccessReadBuffer;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
+import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
@@ -27,10 +27,10 @@ public class MergePdfConverter implements Converter {
 
             for (FileMetaData file : inputs) {
                 Resource resource = storageService.load(file.getStoragePath());
-                merger.addSource(new RandomAccessReadBuffer(resource.getInputStream()));
+                merger.addSource(resource.getInputStream());
             }
 
-            merger.mergeDocuments(null);
+            merger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
             return out.toByteArray();
         } catch (Exception e) {
             throw new RuntimeException("PDF merge failed", e);

@@ -136,10 +136,10 @@ export default function Home() {
       <header className="w-full border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
         <div className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
           <h1 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-            Mark-1
+            FastConvert
           </h1>
           <span className="text-sm text-zinc-500">
-            File Conversion Platform
+            Free Online PDF Converter
           </span>
         </div>
       </header>
@@ -147,10 +147,10 @@ export default function Home() {
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center gap-8 px-6 py-12">
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
-            Convert your files to PDF
+            Convert any file to PDF in seconds
           </h2>
           <p className="mt-2 text-zinc-500 dark:text-zinc-400">
-            Upload files, convert instantly, download. No signup required.
+            Drop your images, markdown, or HTML files — get a PDF back instantly. Free, no signup, no watermarks.
           </p>
         </div>
 
@@ -328,7 +328,7 @@ export default function Home() {
 
       <footer className="w-full border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
         <div className="max-w-5xl mx-auto px-6 py-4 text-center text-sm text-zinc-400">
-          Mark-1 File Conversion Platform
+          FastConvert — Free Online PDF Converter
         </div>
       </footer>
     </div>

@@ -8,8 +8,11 @@ import lombok.RequiredArgsConstructor;
 import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
+import org.jsoup.Jsoup;
+import org.jsoup.helper.W3CDom;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
+import org.w3c.dom.Document;
 
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
@@ -17,8 +20,10 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class MarkdownToPdfConverter implements Converter{
+public class MarkdownToPdfConverter implements Converter {
+
     private final StorageService storageService;
+
     @Override
     public byte[] convert(List<FileMetaData> inputs) {
         try {
@@ -30,14 +35,18 @@ public class MarkdownToPdfConverter implements Converter{
             }
 
             Parser parser = Parser.builder().build();
-            Node document = parser.parse(markdown.toString());
+            Node node = parser.parse(markdown.toString());
             HtmlRenderer renderer = HtmlRenderer.builder().build();
-            String html = "<html><body>" + renderer.render(document) + "</body></html>";
+            String html = "<html><body>" + renderer.render(node) + "</body></html>";
+
+            org.jsoup.nodes.Document jsoupDoc = Jsoup.parse(html);
+            jsoupDoc.outputSettings().syntax(org.jsoup.nodes.Document.OutputSettings.Syntax.xml);
+            Document w3cDoc = new W3CDom().fromJsoup(jsoupDoc);
 
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             PdfRendererBuilder builder = new PdfRendererBuilder();
             builder.useFastMode();
-            builder.withHtmlContent(html, null);
+            builder.withW3cDocument(w3cDoc, null);
             builder.toStream(out);
             builder.run();
             return out.toByteArray();
