@@ -11,4 +11,4 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 RUN mkdir -p /app/uploads
 EXPOSE 8080
-CMD echo "MONGO_URI_FIRST10=$(echo $SPRING_DATA_MONGODB_URI | head -c 20)" && java -jar app.jar
+CMD java -jar app.jar "--spring.data.mongodb.uri=$SPRING_DATA_MONGODB_URI"
