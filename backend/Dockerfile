@@ -11,4 +11,4 @@ WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 RUN mkdir -p /app/uploads
 EXPOSE 8080
-CMD java -jar app.jar
+CMD echo "MONGO_URI_SET=${SPRING_DATA_MONGODB_URI:+yes}" && java -jar app.jar
